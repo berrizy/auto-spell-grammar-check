@@ -1,0 +1,67 @@
+(nlp_env) yoganita@10-17-64-251 NLP_pr % python main.py --split dev
+
+=================================================================
+  NLP Final Project: Auto Spell and Grammar Check
+  Yash Kumar & Selma Nahas
+=================================================================
+
+[1/4] Loading data...
+[DataLoader] Loaded 5248 sentences from: ['A1.m2', 'A2.m2', 'A3.m2', 'A10.m2']
+  Train: 4198 sentences
+  Dev:   525 sentences
+  Test:  525 sentences
+  Mode:  Sample Dataset
+
+[2/4] Training components...
+[SpellCorrector] Trained on 4198 sentences.
+[SpellCorrector] Vocabulary size: 3,163 words
+[SpellCorrector] Top 10 words: [('the', 4151), ('to', 3521), ('of', 2291), ('and', 2275), ('is', 1584), ('in', 1317), ('their', 1174), ('it', 1090), ('people', 1082), ('that', 1080)]
+[TrigramLM] Trained on 4198 sentences.
+[TrigramLM] Vocab size: 3176
+[TrigramLM] Trigrams:   34,964
+[MostFrequentBaseline] Most frequent word: 'the'
+
+[3/4] Running systems on Dev set...
+[4/4] Evaluating...
+
+=================================================================
+  Dev Set Results
+=================================================================
+System                                   P      R   F0.5  SentAcc
+-----------------------------------------------------------------
+Grammar Only (ours)                 0.0622 0.0317 0.0522   0.1219
+Full Pipeline (ours)                0.0430 0.0415 0.0427   0.0057
+Spell Only (ours)                   0.0171 0.0143 0.0165   0.0057
+Dict Spell Checker Baseline         0.0119 0.0098 0.0114   0.0057
+No-Change Baseline                  0.0000 0.0000 0.0000   0.1371
+Most-Frequent Baseline              0.0000 0.0000 0.0000   0.0057
+=================================================================
+
+=================================================================
+  Sample Pipeline Outputs (Dev Set)
+=================================================================
+
+[1] ❌
+  SRC:    Firstly , when people rely on the social media to communicate with their friends and parents , they will accustom to communicate by typing and not talking .
+  OUTPUT: Firstly, when people rely on the social media to communicate with their friends and parents, they will accustom to communicates by typing and not talking.
+  GOLD:   Firstly , when people rely on social media to communicate with their friends and parents , they will become accustomed to communicating by typing and not talking .
+
+[2] ❌
+  SRC:    However , if a dignosed carrier is obligated to tell his or her relatives , the relatives will be forced to know their higher chance of being genetic risk carriers .
+  OUTPUT: However, if a dignosed carrier is obligated to tell his or her relatives, the relatives will be forced to know their higher chance of being genetic risk carrier.
+  GOLD:   However , if a diagnosed carrier is obliged to tell their relatives , the relatives will have been forced into knowing their increased chance of being genetic risk carriers .
+
+[3] ❌
+  SRC:    Some of the famous examples would be social media sites like Twitter and Facebook .
+  OUTPUT: Some of the famous examples would be social media sites like Twitter and Facebook.
+  GOLD:   Some of the famous examples would be social media sites like Twitter and Facebook .
+
+[4] ❌
+  SRC:    Some may even do something wrong .
+  OUTPUT: Some may even do something wrong.
+  GOLD:   Some may even do something wrong .
+
+[5] ❌
+  SRC:    This might be beneficial for his future if he is aware of the risk of having this disorder .
+  OUTPUT: This might be beneficial for his future if he is aware of the risk of having this disorder.
+  GOLD:   It might be beneficial for his future if he is aware of the risk of having this disorder .
