@@ -1,0 +1,83 @@
+=================================================================
+  NLP Final Project: Auto Spell and Grammar Check
+  Yash Kumar & Selma Nahas
+=================================================================
+
+[1/4] Loading data...
+  Train: 30 sentences
+  Dev:   8 sentences
+  Test:  10 sentences
+  Mode:  Sample Dataset
+
+[2/4] Training components...
+[SpellCorrector] Trained on 30 sentences.
+[SpellCorrector] Vocabulary size: 154 words
+[SpellCorrector] Top 10 words: [('the', 26), ('she', 7), ('to', 7), ('he', 6), ('is', 4), ('in', 4), ('and', 3), ('has', 3), ('we', 3), ('at', 3)]
+[TrigramLM] Trained on 30 sentences.
+[TrigramLM] Vocab size: 159
+[TrigramLM] Trigrams:   250
+[MostFrequentBaseline] Most frequent word: 'the'
+
+[3/4] Running systems on Dev set...
+[4/4] Evaluating...
+
+=================================================================
+  Dev Set Results
+=================================================================
+System                                   P      R   F0.5  SentAcc
+-----------------------------------------------------------------
+Dict Spell Checker Baseline         0.5000 0.1538 0.3448   0.2500
+Spell Only (ours)                   0.2500 0.1538 0.2222   0.1250
+Full Pipeline (ours)                0.2222 0.1538 0.2041   0.0000
+No-Change Baseline                  0.0000 0.0000 0.0000   0.2500
+Most-Frequent Baseline              0.0000 0.0000 0.0000   0.0000
+Grammar Only (ours)                 0.0000 0.0000 0.0000   0.0000
+=================================================================
+
+⚠️  Running on TEST set — only do this for final evaluation!
+
+[3/4] Running systems on Test set...
+[4/4] Evaluating...
+
+=================================================================
+  Test Set Results
+=================================================================
+System                                   P      R   F0.5  SentAcc
+-----------------------------------------------------------------
+Dict Spell Checker Baseline         0.4286 0.1667 0.3261   0.1000
+Spell Only (ours)                   0.2143 0.1667 0.2027   0.0000
+Full Pipeline (ours)                0.1250 0.1111 0.1220   0.0000
+No-Change Baseline                  0.0000 0.0000 0.0000   0.2000
+Most-Frequent Baseline              0.0000 0.0000 0.0000   0.0000
+Grammar Only (ours)                 0.0000 0.0000 0.0000   0.0000
+=================================================================
+
+=================================================================
+  Sample Pipeline Outputs (Dev Set)
+=================================================================
+
+[1] ❌
+  SRC:    The managment team has made there desicion.
+  OUTPUT: The managment team has me there decision.
+  GOLD:   The management team has made their decision.
+
+[2] ❌
+  SRC:    She speaked very confidently during the presentaion.
+  OUTPUT: She speaked very confidently during the presentaion.
+  GOLD:   She spoke very confidently during the presentation.
+
+[3] ❌
+  SRC:    We needs to adress this problam immediately.
+  OUTPUT: We need to adress this problam immediately.
+  GOLD:   We need to address this problem immediately.
+
+[4] ❌
+  SRC:    The researchs shows that exercize is benefitial.
+  OUTPUT: The researchs shows that exercize is benefitial.
+  GOLD:   The research shows that exercise is beneficial.
+
+[5] ❌
+  SRC:    He have been studing english for three years.
+  OUTPUT: He have been studying english for three years.
+  GOLD:   He has been studying English for three years.
+
