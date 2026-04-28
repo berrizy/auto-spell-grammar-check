@@ -1,0 +1,67 @@
+(nlp_env) yoganita@10-17-64-251 NLP_pr % python main.py --split dev
+
+=================================================================
+  NLP Final Project: Auto Spell and Grammar Check
+  Yash Kumar & Selma Nahas
+=================================================================
+
+[1/4] Loading data...
+[DataLoader] Loaded 13120 sentences from: ['A1.m2', 'A2.m2', 'A3.m2', 'A4.m2', 'A5.m2', 'A6.m2', 'A7.m2', 'A8.m2', 'A9.m2', 'A10.m2']
+  Train: 10496 sentences
+  Dev:   1312 sentences
+  Test:  1312 sentences
+  Mode:  Sample Dataset
+
+[2/4] Training components...
+[SpellCorrector] Trained on 10496 sentences.
+[SpellCorrector] Vocabulary size: 3,542 words
+[SpellCorrector] Top 10 words: [('the', 10439), ('to', 8802), ('and', 5760), ('of', 5709), ('is', 3943), ('in', 3362), ('their', 2883), ('it', 2825), ('that', 2785), ('people', 2770)]
+[TrigramLM] Trained on 10496 sentences.
+[TrigramLM] Vocab size: 3555
+[TrigramLM] Trigrams:   47,322
+[MostFrequentBaseline] Most frequent word: 'the'
+
+[3/4] Running systems on Dev set...
+[4/4] Evaluating...
+
+=================================================================
+  Dev Set Results
+=================================================================
+System                                   P      R   F0.5  SentAcc
+-----------------------------------------------------------------
+Grammar Only (ours)                 0.0957 0.0396 0.0746   0.1540
+Full Pipeline (ours)                0.0442 0.0432 0.0440   0.0076
+Spell Only (ours)                   0.0071 0.0062 0.0069   0.0084
+Dict Spell Checker Baseline         0.0056 0.0049 0.0055   0.0084
+No-Change Baseline                  0.0000 0.0000 0.0000   0.1601
+Most-Frequent Baseline              0.0000 0.0000 0.0000   0.0084
+=================================================================
+
+=================================================================
+  Sample Pipeline Outputs (Dev Set)
+=================================================================
+
+[1] ❌
+  SRC:    In a conclusion , there are both advantages and disadvantages of using social media in daily life .
+  OUTPUT: In a conclusion, there are both advantages and disadvantages of using social media in daily life.
+  GOLD:   In conclusion , there are both advantages and disadvantages to using social media in our daily lives .
+
+[2] ❌
+  SRC:    Social media helps to lessen the hassle of geographical distance and brings people closer .
+  OUTPUT: Social media helps to lessen the hassle of geographical distance and brings people closer.
+  GOLD:   Social media helps to lessen the hassle of geographical distance and brings people closer .
+
+[3] ❌
+  SRC:    For example , does the carrier only need to tell his or her direct relatives like parents and brothers and sisters or does he also need to tell relatives like his grandmother 's sister 's son 's daughter 's nephew ?
+  OUTPUT: For example, does the carrier only need to tell his or her direct relatives like parents and brothers and sisters or does he also need to tell relatives like his grandmother ' s sister ' s son ' s daughter ' s nephew?
+  GOLD:   For example , does the carrier only need to tell their direct relatives , like parents , brothers and sisters , or do they also need to tell relatives like their grandmother 's sister 's son 's daughter 's nephew ?
+
+[4] ❌
+  SRC:    For Facebook , a comprehensive way of sharing is offered since multiple photos and videos can be uploaded , long notes can be published , even documents and data can be shared through Facebook nowadays .
+  OUTPUT: For Facebook, a comprehensive way of sharing is offered since multiple photos and videos can be uploaded, long notes can be published, even documents and data can be shared through Facebook nowadays.
+  GOLD:   For Facebook , a more comprehensive way of sharing is offered since multiple photos and videos can be uploaded , long notes can be published , even documents and data can be shared through Facebook nowadays .
+
+[5] ❌
+  SRC:    While most people agree that each individual has his own right to decide whether to undergo a genetic test or not , they have different stands in whether it is the patient 's responsibility or freedom to share the result with his or her relatives .
+  OUTPUT: While most people agree that each individual has his own right to decide whether to undergo a genetic test or not, they have different stands in whether it is the patient ' s responsibility or freedom to share the result with his or her relatives.
+  GOLD:   While most people agree that each individual has their own right to decide whether to undergo a genetic test or not , they have different positions on whether it is the patient 's responsibility or patient 's freedom to share the result with his or her relatives .
