@@ -1,2 +1,5 @@
 # auto-spell-grammar-check
-An NLP-based spell and grammar checker.
+## A Pipeline-Based System for Automatic Spell and Grammar Correction
+
+### Abstract
+	Spelling and grammatical errors are common in written communication and can reduce clarity and credibility, especially in informal or fast-paced contexts. Addressing these errors is an important task in natural language processing, as accurate correction systems can improve the quality and effectiveness of written text. In this work, we develop a pipeline-based system for automatic error correction that combines a spell correction module using Levenshtein edit distance and unigram frequency with a grammar correction module based on a trigram language model. The system first corrects misspelled words and then selects the most fluent sentence from a set of candidate variations. We evaluate our system on the CoNLL-2014 dataset using standard grammatical error correction metrics, including precision, recall, and the F0.5 score. Our evaluation shows that the grammar correction component achieves the strongest performance, while the full pipeline is negatively affected by errors introduced in the spell correction stage. Overall, our results demonstrate that classical NLP methods can produce accurate local corrections but struggle with complex, context-dependent grammatical errors. 
